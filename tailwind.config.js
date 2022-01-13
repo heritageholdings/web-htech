@@ -1,9 +1,7 @@
 module.exports = {
-  purge: ["./_includes/**/*.html", "./_layouts/**/*.html", "./*.html"],
-  darkMode: false,
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {},
   },
-  variants: {},
-  plugins: [require("@tailwindcss/typography")],
-};
+  plugins: [],
+}
