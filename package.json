@@ -23,6 +23,8 @@
     "@fontsource/inter": "^4.5.1",
     "@headlessui/react": "^1.4.2",
     "@heroicons/react": "^1.0.5",
+    "@types/react": "^17.0.38",
+    "@types/react-helmet": "^6.1.5",
     "autoprefixer": "^10.4.2",
     "gatsby-plugin-postcss": "^5.5.0",
     "gh-pages": "^3.2.3",

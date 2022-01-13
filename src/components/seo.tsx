@@ -10,7 +10,14 @@ import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-function Seo({ description, lang, meta, title }) {
+export type Props = {
+  description?: string
+  lang?: string
+  meta?: React.ComponentProps<typeof Helmet>["meta"]
+  title?: string
+}
+
+const Seo: React.FC<Props> = ({ description, lang, meta = [], title }) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -68,7 +75,8 @@ function Seo({ description, lang, meta, title }) {
           name: `twitter:description`,
           content: metaDescription,
         },
-      ].concat(meta)}
+        ...meta,
+      ]}
     />
   )
 }

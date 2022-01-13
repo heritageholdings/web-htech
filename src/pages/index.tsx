@@ -1,24 +1,27 @@
 import * as React from "react"
-import { Link } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
+import { PageProps, Link, graphql } from "gatsby"
+
 import { Fragment } from "react"
 import { Popover, Transition } from "@headlessui/react"
 import { MenuIcon, XIcon } from "@heroicons/react/outline"
 
-import { Helmet } from "react-helmet"
-
-import Layout from "../components/layout"
 import Seo from "../components/seo"
-import { fontFamily } from "tailwindcss/defaultTheme"
+
+type DataProps = {
+  site: {
+    buildTime: string
+  }
+}
 
 const navigation = [
-  { name: "About", href: "#" },
-  { name: "Contacts", href: "#" },
+  { name: "About", href: "/about" },
+  { name: "Contacts", href: "/contacts" },
 ]
 
-const IndexPage = () => (
-  <section class="font-sans">
-    <div className="relative bg-white overflow-hidden">
+const IndexPage: React.FC<PageProps<DataProps>> = ({ data, path }) => (
+  <>
+    <Seo />
+    <div className="relative bg-white overflow-hidden font-sans">
       <div className="max-w-7xl mx-auto">
         <div className="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
           <svg
@@ -149,7 +152,7 @@ const IndexPage = () => (
         />
       </div>
     </div>
-  </section>
+  </>
 )
 
 export default IndexPage
