@@ -1,9 +1,9 @@
 module.exports = {
   pathPrefix: `/web-htech`, // FIXME: remove once we deploy to domain
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `HTech SRL`,
+    description: `Building the Future of Private Markets`,
+    // author: `@gatsbyjs`,
     siteUrl: `https://heritageholdings.github.io/`,
   },
   plugins: [
@@ -29,7 +29,7 @@ module.exports = {
         // https://css-tricks.com/meta-theme-color-and-trickery/
         // theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        // icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
