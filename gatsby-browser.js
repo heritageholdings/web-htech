@@ -6,4 +6,5 @@
 
 // You can delete this file if you're not using it
 
+import "@fontsource/inter"
 import "./src/styles/global.css"
