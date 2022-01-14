@@ -1,29 +1,12 @@
 import * as React from "react"
 import { Link } from "gatsby"
 
-import Layout from "../components/layout"
-import Seo from "../components/seo"
+import { Footer } from "../components/footer"
+import { Header } from "../components/header"
 
 const ContactsPage = () => (
   <div className="font-sans">
-    <div className="relative bg-indigo-800">
-      <div className="absolute inset-0">
-        <img
-          className="w-full h-full object-cover"
-          src="https://images.unsplash.com/photo-1525130413817-d45c1d127c42?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1920&q=60&&sat=-100"
-          alt=""
-        />
-        <div
-          className="absolute inset-0 bg-indigo-800 mix-blend-multiply"
-          aria-hidden="true"
-        />
-      </div>
-      <div className="relative max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
-        <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
-          Get in touch
-        </h1>
-      </div>
-    </div>
+    <Header title="Get in Touch" />
     <div className="bg-white">
       <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:py-24 lg:px-8">
         <div className="divide-y-2 divide-gray-200">
@@ -113,15 +96,7 @@ const ContactsPage = () => (
         </div>
       </div>
     </div>
-    <footer className="bg-white">
-      <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
-        <div className="mt-8 md:mt-0 md:order-1">
-          <p className="text-center text-base text-gray-400">
-            &copy; 2020 Workflow, Inc. All rights reserved.
-          </p>
-        </div>
-      </div>
-    </footer>
+    <Footer />
   </div>
 )
 
