@@ -1,5 +1,5 @@
 module.exports = {
-  pathPrefix: ``,
+  pathPrefix: `/`,
   siteMetadata: {
     title: `HTECH SRL`,
     description: `Building the Future of Private Markets`,
