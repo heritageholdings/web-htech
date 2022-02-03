@@ -1,7 +1,5 @@
 name: Build and Deploy
-on:
-  push:
-    branches: master
+on: [workflow_dispatch]
 jobs:
   build-and-deploy:
     name: Build and deploy Gatsby site
