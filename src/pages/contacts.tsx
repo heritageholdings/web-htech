@@ -16,46 +16,16 @@ const ContactsPage = () => (
             <div className="mt-8 grid grid-cols-1 gap-12 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-12 lg:mt-0 lg:col-span-2">
               <div>
                 <h3 className="text-lg leading-6 font-medium text-gray-900">
-                  Collaborate
-                </h3>
-                <dl className="mt-2 text-base text-gray-500">
-                  <div>
-                    <dt className="sr-only">Email</dt>
-                    <dd>support@example.com</dd>
-                  </div>
-                  <div className="mt-1">
-                    <dt className="sr-only">Phone number</dt>
-                    <dd>+1 (555) 123-4567</dd>
-                  </div>
-                </dl>
-              </div>
-              <div>
-                <h3 className="text-lg leading-6 font-medium text-gray-900">
-                  Press
-                </h3>
-                <dl className="mt-2 text-base text-gray-500">
-                  <div>
-                    <dt className="sr-only">Email</dt>
-                    <dd>support@example.com</dd>
-                  </div>
-                  <div className="mt-1">
-                    <dt className="sr-only">Phone number</dt>
-                    <dd>+1 (555) 123-4567</dd>
-                  </div>
-                </dl>
-              </div>
-              <div>
-                <h3 className="text-lg leading-6 font-medium text-gray-900">
                   Join our team
                 </h3>
                 <dl className="mt-2 text-base text-gray-500">
                   <div>
                     <dt className="sr-only">Email</dt>
-                    <dd>support@example.com</dd>
-                  </div>
-                  <div className="mt-1">
-                    <dt className="sr-only">Phone number</dt>
-                    <dd>+1 (555) 123-4567</dd>
+                    <dd>
+                      <a href="mailto:careers@teamhtech.com">
+                        careers@teamhtech.com
+                      </a>
+                    </dd>
                   </div>
                 </dl>
               </div>
@@ -66,11 +36,9 @@ const ContactsPage = () => (
                 <dl className="mt-2 text-base text-gray-500">
                   <div>
                     <dt className="sr-only">Email</dt>
-                    <dd>support@example.com</dd>
-                  </div>
-                  <div className="mt-1">
-                    <dt className="sr-only">Phone number</dt>
-                    <dd>+1 (555) 123-4567</dd>
+                    <dd>
+                      <a href="mailto:info@teamhtech.com">info@teamhtech.com</a>
+                    </dd>
                   </div>
                 </dl>
               </div>
@@ -86,8 +54,8 @@ const ContactsPage = () => (
                   Italy
                 </h3>
                 <div className="mt-2 text-base text-gray-500">
-                  <p>Corso di Porta Nuova, 34</p>
-                  <p className="mt-1">20121, Milano</p>
+                  <p>Piazza San Babila, 5</p>
+                  <p className="mt-1">20122, Milano</p>
                 </div>
               </div>
             </div>
