@@ -6,6 +6,7 @@ import { Popover, Transition } from "@headlessui/react"
 import { MenuIcon, XIcon } from "@heroicons/react/outline"
 
 import Seo from "../components/seo"
+import { Footer } from "../components/footer"
 
 type DataProps = {
   site: {
@@ -152,6 +153,7 @@ const IndexPage: React.FC<PageProps<DataProps>> = ({ data, path }) => (
         />
       </div>
     </div>
+    <Footer />
   </>
 )
 
