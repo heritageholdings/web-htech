@@ -1,10 +1,10 @@
 module.exports = {
   pathPrefix: `/web-htech`, // FIXME: remove once we deploy to domain
   siteMetadata: {
-    title: `HTech SRL`,
+    title: `HTECH SRL`,
     description: `Building the Future of Private Markets`,
-    author: `HTech SRL`,
-    siteUrl: `https://heritageholdings.github.io/`,
+    author: `HTECH SRL`,
+    siteUrl: `https://teamhtech.com/`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

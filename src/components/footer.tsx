@@ -6,7 +6,7 @@ export const Footer: React.FC<{}> = () => (
       <div className="mt-8 md:mt-0 md:order-1">
         <p className="text-center text-base text-gray-400">
           &copy; 2022 HTECH S.r.l. &bull; VAT IT11713660964 &bull; Corso di
-          Porta Nuova, 34 - 20121, Milano
+          Porta Nuova, 34 &bull; 20121, Milano
         </p>
       </div>
     </div>
