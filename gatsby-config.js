@@ -1,5 +1,5 @@
 module.exports = {
-  pathPrefix: `/web-htech`, // FIXME: remove once we deploy to domain
+  pathPrefix: ``,
   siteMetadata: {
     title: `HTECH SRL`,
     description: `Building the Future of Private Markets`,
