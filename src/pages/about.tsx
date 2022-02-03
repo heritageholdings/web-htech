@@ -11,6 +11,11 @@ const faqs = [
     answer:
       "You boil the hell out of it. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
   },
+   {
+    question: "What is your name?",
+    answer:
+      "You boil the hell out of it. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
+  },
   // More questions...
 ]
 
