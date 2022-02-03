@@ -4,6 +4,9 @@ jobs:
   build-and-deploy:
     name: Build and deploy Gatsby site
     runs-on: ubuntu-latest
+    concurrency:
+      # Run max one workflow at any time
+      group: ${{ github.workflow }}
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
@@ -20,5 +23,12 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
-      - name: Build and deploy
-        run: yarn deploy
+      - name: Build site
+        run: yarn build
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        if: ${{ github.ref == 'refs/heads/main' }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
