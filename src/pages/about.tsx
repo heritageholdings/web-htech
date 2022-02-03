@@ -1,8 +1,6 @@
 import * as React from "react"
 import { Link } from "gatsby"
 
-import Layout from "../components/layout"
-import Seo from "../components/seo"
 import { Header } from "../components/header"
 import { Footer } from "../components/footer"
 
@@ -17,7 +15,7 @@ const faqs = [
 
 const AboutPage = () => (
   <div className="font-sans">
-    <Header title="About Us" />
+    <Header title="About Us" darkBg={true} />
     <div className="bg-white">
       <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:py-20 lg:px-8">
         <div className="lg:grid lg:grid-cols-3 lg:gap-8">

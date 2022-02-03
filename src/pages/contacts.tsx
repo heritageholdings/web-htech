@@ -1,12 +1,11 @@
 import * as React from "react"
-import { Link } from "gatsby"
 
 import { Footer } from "../components/footer"
 import { Header } from "../components/header"
 
 const ContactsPage = () => (
   <div className="font-sans">
-    <Header title="Get in Touch" />
+    <Header title="Get in Touch" darkBg={true} />
     <div className="bg-white">
       <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:py-24 lg:px-8">
         <div className="divide-y-2 divide-gray-200">
