@@ -7,12 +7,12 @@ import Seo from "../components/seo"
 
 const faqs = [
   {
-    question: "Our Mission",
+    question: "Our mission",
     answer:
       "To make the global alternative investment market more accessible, efficient and connected",
   },
    {
-    question: "What do we do",
+    question: "What we do",
     answer:
       "We help investment managers solving their hardest and most resource-heavy business challenges - whether it's about cutting costs or boosting revenues. Our cloud platform works as a single source of truth for the front, middle and back offices: we aim at giving investment managers the power to see clearly and act securely.
      ",
