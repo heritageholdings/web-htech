@@ -59,8 +59,8 @@ const ContactsPage = () => (
                     Italy
                   </h3>
                   <div className="mt-2 text-base text-gray-500">
-                    <p>Piazza San Babila, 5</p>
-                    <p className="mt-1">20122, Milano</p>
+                    <p>Via Spadari, 2</p>
+                    <p className="mt-1">20123, Milano</p>
                   </div>
                 </div>
               </div>
