@@ -1,0 +1,22 @@
+---
+import { site, addressOneLine } from "../config/site"
+
+// Previously hardcoded to 2022 and left to rot.
+const year = new Date().getFullYear()
+
+// Built as one string rather than interleaved expressions in the markup:
+// Astro emits no whitespace between adjacent expressions, so a code formatter
+// splitting `{year} {site.legalName}` across two lines silently renders
+// "2026HTECH". Keeping it in one template literal makes that impossible.
+const line = `© ${year} ${site.legalName} • VAT ${site.vat} • ${addressOneLine}`
+---
+
+<footer class="bg-white">
+  <div
+    class="mx-auto mt-12 max-w-7xl border-t border-gray-200 px-4 py-12 sm:px-6 md:flex md:items-center md:justify-between lg:px-8"
+  >
+    <div class="mt-8 md:order-1 md:mt-0">
+      <p class="text-center text-base text-gray-400">{line}</p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,177 @@
+---
+import { site } from "../config/site"
+
+interface Props {
+  /** Tunes link colours for use over a dark background. */
+  darkBg?: boolean
+}
+
+const { darkBg = false } = Astro.props
+
+// These must be complete, literal class names. The previous React version built
+// the hover class by interpolation (`hover:${colour}`), which Tailwind cannot
+// see when scanning source, so hover states silently never rendered.
+const linkClass = darkBg
+  ? "font-medium text-gray-400 hover:text-gray-200"
+  : "font-medium text-gray-500 hover:text-gray-900"
+
+const wordmarkClass = darkBg
+  ? "text-xl font-extrabold tracking-tight text-white sm:text-2xl"
+  : "text-xl font-extrabold tracking-tight text-indigo-600 sm:text-2xl"
+---
+
+<div class="relative px-4 pt-6 sm:px-6 lg:px-8">
+  <nav
+    class="relative flex items-center justify-between sm:h-10 lg:justify-start"
+    aria-label="Global"
+  >
+    <div class="flex shrink-0 grow items-center lg:grow-0">
+      <div class="flex w-full items-center justify-between md:w-auto">
+        <a href="/" class={wordmarkClass}> HTECH </a>
+        <div class="-mr-2 flex items-center md:hidden">
+          <button
+            type="button"
+            id="mobile-menu-button"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+            class="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:ring-2 focus:ring-indigo-500 focus:ring-inset focus:outline-none"
+          >
+            <span class="sr-only">Open main menu</span>
+            <svg
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="hidden md:ml-10 md:block md:space-x-8 md:pr-4">
+      {
+        site.nav.map(item => (
+          <a href={item.href} class={linkClass}>
+            {item.name}
+          </a>
+        ))
+      }
+    </div>
+  </nav>
+</div>
+
+<div
+  id="mobile-menu"
+  hidden
+  class="absolute inset-x-0 top-0 z-10 origin-top-right p-2 md:hidden"
+>
+  <div
+    class="overflow-hidden rounded-lg bg-white shadow-md ring-1 ring-black/5"
+  >
+    <div class="flex items-center justify-end px-5 pt-4">
+      <div class="-mr-2">
+        <button
+          type="button"
+          id="mobile-menu-close"
+          class="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:ring-2 focus:ring-indigo-500 focus:ring-inset focus:outline-none"
+        >
+          <span class="sr-only">Close main menu</span>
+          <svg
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div class="space-y-1 px-2 pt-2 pb-3">
+      {
+        site.nav.map(item => (
+          <a
+            href={item.href}
+            class="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900"
+          >
+            {item.name}
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</div>
+
+<script>
+  // Replaces the Headless UI <Popover>, which required React. Keeps the same
+  // affordances: labelled trigger, Escape to close, focus moved into the panel
+  // on open and returned to the trigger on close, and Tab confined to the panel.
+  const button = document.getElementById("mobile-menu-button")
+  const closeButton = document.getElementById("mobile-menu-close")
+  const panel = document.getElementById("mobile-menu")
+
+  if (button && closeButton && panel) {
+    const focusable = () =>
+      Array.from(
+        panel.querySelectorAll<HTMLElement>("a[href], button:not([disabled])"),
+      )
+
+    const open = () => {
+      panel.hidden = false
+      button.setAttribute("aria-expanded", "true")
+      closeButton.focus()
+      document.addEventListener("keydown", onKeydown)
+      document.addEventListener("click", onDocumentClick)
+    }
+
+    const close = ({ refocus = true } = {}) => {
+      panel.hidden = true
+      button.setAttribute("aria-expanded", "false")
+      document.removeEventListener("keydown", onKeydown)
+      document.removeEventListener("click", onDocumentClick)
+      if (refocus) button.focus()
+    }
+
+    function onKeydown(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        close()
+        return
+      }
+      if (event.key !== "Tab") return
+
+      const items = focusable()
+      if (items.length === 0) return
+      const first = items[0]!
+      const last = items[items.length - 1]!
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault()
+        last.focus()
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault()
+        first.focus()
+      }
+    }
+
+    function onDocumentClick(event: MouseEvent) {
+      const target = event.target as Node
+      if (!panel!.contains(target) && !button!.contains(target)) {
+        close({ refocus: false })
+      }
+    }
+
+    button.addEventListener("click", open)
+    closeButton.addEventListener("click", () => close())
+  }
+</script>

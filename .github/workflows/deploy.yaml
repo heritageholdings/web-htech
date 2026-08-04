@@ -1,0 +1,47 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  # Kept so a deploy can still be re-run by hand if one ever needs replaying.
+  workflow_dispatch:
+
+# peaceiris/actions-gh-pages pushes the built site to the gh-pages branch,
+# so this job needs write access to repository contents.
+permissions:
+  contents: write
+
+# Let a running deploy finish rather than cancelling it half-published.
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Build and deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .node-version
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Type-check
+        run: npm run check
+
+      - name: Build
+        run: npm run build
+
+      # Publishes dist/ to the gh-pages branch, which GitHub Pages serves.
+      # dist/CNAME (from public/) preserves the custom domain, and
+      # dist/.nojekyll stops Jekyll from discarding Astro's _astro/ directory.
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist

@@ -1,0 +1,82 @@
+---
+import Base from "../layouts/Base.astro"
+import Header from "../components/Header.astro"
+import Footer from "../components/Footer.astro"
+import { site } from "../config/site"
+---
+
+<Base title="Contact HTECH">
+  <Header title="Get in Touch" darkBg={true} />
+  <div class="bg-white">
+    <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+      <div class="divide-y-2 divide-gray-200">
+        <div class="lg:grid lg:grid-cols-3 lg:gap-8">
+          <h2 class="text-2xl font-extrabold text-gray-900 sm:text-3xl">
+            Contacts
+          </h2>
+          <div
+            class="mt-8 grid grid-cols-1 gap-12 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-12 lg:col-span-2 lg:mt-0"
+          >
+            <div>
+              <h3 class="text-lg leading-6 font-medium text-gray-900">
+                Join our team
+              </h3>
+              <dl class="mt-2 text-base text-gray-500">
+                <div>
+                  <dt class="sr-only">Email</dt>
+                  <dd>
+                    <a
+                      href={`mailto:${site.email.careers}`}
+                      class="hover:text-indigo-600"
+                    >
+                      {site.email.careers}
+                    </a>
+                  </dd>
+                </div>
+              </dl>
+            </div>
+            <div>
+              <h3 class="text-lg leading-6 font-medium text-gray-900">
+                Say hello
+              </h3>
+              <dl class="mt-2 text-base text-gray-500">
+                <div>
+                  <dt class="sr-only">Email</dt>
+                  <dd>
+                    <a
+                      href={`mailto:${site.email.info}`}
+                      class="hover:text-indigo-600"
+                    >
+                      {site.email.info}
+                    </a>
+                  </dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+        </div>
+        <div class="mt-16 pt-16 lg:grid lg:grid-cols-3 lg:gap-8">
+          <h2 class="text-2xl font-extrabold text-gray-900 sm:text-3xl">
+            Locations
+          </h2>
+          <div
+            class="mt-8 grid grid-cols-1 gap-12 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-12 lg:col-span-2 lg:mt-0"
+          >
+            <div>
+              <h3 class="text-lg leading-6 font-medium text-gray-900">
+                {site.address.country}
+              </h3>
+              <div class="mt-2 text-base text-gray-500">
+                <p>{site.address.street}</p>
+                <p class="mt-1">
+                  {site.address.postalCode}, {site.address.city}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <Footer />
+</Base>
