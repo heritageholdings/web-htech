@@ -77,8 +77,27 @@ public/              copied verbatim to the site root (CNAME, favicon, robots)
 
 ## Deployment notes
 
-Deployment uses the official `actions/deploy-pages` flow, which requires the
-repository's **Settings → Pages → Source** to be set to **GitHub Actions**.
+Pushing to `main` runs
+[`.github/workflows/deploy.yaml`](.github/workflows/deploy.yaml), which builds
+the site and pushes `dist/` to the **`gh-pages` branch**. GitHub Pages serves
+that branch.
 
-`public/CNAME` is what keeps the custom domain pointed at this site. It must
-stay in `public/`, which is why that directory is deliberately not gitignored.
+The repository's Pages source must stay on **Settings → Pages → Source → Deploy
+from a branch → `gh-pages` → `/ (root)`**. No other configuration is needed.
+
+Three files in `public/` are load-bearing. Astro copies that directory verbatim
+to the site root, so they end up in `dist/` and then on `gh-pages`:
+
+- **`CNAME`** points the custom domain at this site. Without it, teamhtech.com
+  stops resolving here.
+- **`.nojekyll`** stops GitHub Pages running Jekyll over the branch. Jekyll
+  discards directories starting with an underscore, and Astro puts all CSS, JS
+  and images in `_astro/` — so without this file the site deploys unstyled and
+  imageless.
+- **`robots.txt`** and `favicon.svg`, which are ordinary static files.
+
+Note that `public/` is **source**, not build output — under Gatsby it was the
+build directory and was gitignored. It must stay tracked in git.
+
+For the full set of repository conventions and pitfalls, see
+[CLAUDE.md](CLAUDE.md).

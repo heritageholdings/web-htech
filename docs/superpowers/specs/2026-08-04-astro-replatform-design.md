@@ -70,11 +70,18 @@ of vanilla JavaScript. Behaviour must be at parity or better: `aria-expanded`,
 to the trigger on close. This is the only component whose behaviour is rewritten
 rather than translated, and so the one needing the most careful testing.
 
-**Deployment moves to the official GitHub Pages action.** This requires setting
-_Settings → Pages → Source_ to _GitHub Actions_ in the repository — a manual step
-the author cannot perform. The fallback, if that is unwelcome, is
-`peaceiris/actions-gh-pages@v4` publishing to a `gh-pages` branch, which needs no
-settings change. `public/CNAME` must survive the build either way.
+**Deployment stays on the `gh-pages` branch.** The official
+`actions/deploy-pages` flow was built first, but it requires switching the
+repository's Pages source to _GitHub Actions_. Federico chose to keep the
+existing branch-based setup instead, so the workflow uses
+`peaceiris/actions-gh-pages@v4` publishing `dist/` to `gh-pages`. No repository
+settings change is needed. What does change is the trigger: the job now runs on
+every push to `main` rather than only when someone remembers to click it.
+
+This makes two files in `public/` load-bearing. `CNAME` preserves the custom
+domain. `.nojekyll` prevents GitHub Pages running Jekyll over the branch, which
+would discard Astro's `_astro/` directory — underscore-prefixed, and holding
+every stylesheet, script and image on the site.
 
 ## Bugs fixed
 
