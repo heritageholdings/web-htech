@@ -1,0 +1,39 @@
+---
+import { Image } from "astro:assets"
+import Nav from "./Nav.astro"
+import headerImage from "../assets/page-header.jpg"
+
+interface Props {
+  title: string
+  darkBg?: boolean
+}
+
+const { title, darkBg } = Astro.props
+---
+
+<div class="relative bg-indigo-800">
+  <div class="absolute inset-0">
+    {/* Decorative: sits behind a colour overlay and carries no information. */}
+    <Image
+      src={headerImage}
+      alt=""
+      widths={[640, 1280, 1920, 2560]}
+      sizes="100vw"
+      class="h-full w-full object-cover"
+      loading="eager"
+    />
+    <div
+      class="absolute inset-0 bg-indigo-800 mix-blend-multiply"
+      aria-hidden="true"
+    >
+    </div>
+  </div>
+  <Nav darkBg={darkBg} />
+  <div class="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+    <h1
+      class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl"
+    >
+      {title}
+    </h1>
+  </div>
+</div>

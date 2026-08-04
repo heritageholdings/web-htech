@@ -54,16 +54,11 @@ typings/
 # dotenv environment variable files
 .env*
 
-# gatsby files
-.cache/
-public
+# astro files
+# NB: `public/` is SOURCE under Astro (it was Gatsby's build output), so it must
+# stay tracked — it holds CNAME, which the custom domain depends on.
+dist/
+.astro/
 
 # Mac files
 .DS_Store
-
-# Yarn
-yarn-error.log
-.pnp/
-.pnp.js
-# Yarn Integrity file
-.yarn-integrity
