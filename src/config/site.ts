@@ -17,8 +17,8 @@ export const site = {
   },
   address: {
     country: "Italy",
-    street: "Via Spadari, 2",
-    postalCode: "20123",
+    street: "Corso di Porta Nuova, 34",
+    postalCode: "20121",
     city: "Milano",
   },
   nav: [
@@ -27,5 +27,5 @@ export const site = {
   ],
 } as const
 
-/** e.g. "Via Spadari, 2 • 20123, Milano" */
+/** e.g. "Corso di Porta Nuova, 34 • 20121, Milano" */
 export const addressOneLine = `${site.address.street} • ${site.address.postalCode}, ${site.address.city}`
